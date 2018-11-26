@@ -4,8 +4,7 @@ import com.uber.h3core.H3Core;
 import com.uber.h3core.util.GeoCoord;
 
 /**
- * Hello world!
- *
+ * Calculate the percentage of area error when truncating indexes one resolution.
  */
 public class TruncationRatioApp {
     private static int MAX_ITERATIONS = 10000000;

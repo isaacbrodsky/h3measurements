@@ -3,6 +3,9 @@ package com.isaacbrodsky.h3;
 import com.uber.h3core.util.GeoCoord;
 
 public class SphereRandom {
+    /**
+     * Random coordinate on the sphere, algorithm is from WolframAlpha.
+     */
     public static GeoCoord random() {
         double u = Math.random();
         double v = Math.random();
