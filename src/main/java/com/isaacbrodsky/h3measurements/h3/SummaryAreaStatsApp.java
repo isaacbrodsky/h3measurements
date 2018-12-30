@@ -1,5 +1,6 @@
 package com.isaacbrodsky.h3measurements.h3;
 
+import com.isaacbrodsky.h3measurements.AreaUtils;
 import com.isaacbrodsky.h3measurements.SphereRandom;
 import com.uber.h3core.H3Core;
 import com.uber.h3core.util.GeoCoord;
@@ -27,7 +28,7 @@ public class SummaryAreaStatsApp {
 
                     final long index = h3Core.geoToH3(rnd.lat, rnd.lng, res);
 
-                    final Measure area = AreaUtils.computeArea(h3Core, factory, index);
+                    final Measure area = H3AreaUtils.computeArea(h3Core, factory, index);
 
                     statistics.addValue(AreaUtils.m2ToKm2(area.doubleValue()));
                 }

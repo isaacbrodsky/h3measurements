@@ -1,5 +1,6 @@
 package com.isaacbrodsky.h3measurements.h3;
 
+import com.isaacbrodsky.h3measurements.AreaUtils;
 import com.uber.h3core.H3Core;
 import org.geotools.measure.Measure;
 import org.locationtech.jts.geom.GeometryFactory;
@@ -21,7 +22,7 @@ public class AreaStatsApp {
 
                     final long index = h3Core.stringToH3(l);
 
-                    final Measure area = AreaUtils.computeArea(h3Core, factory, index);
+                    final Measure area = H3AreaUtils.computeArea(h3Core, factory, index);
 
                     System.out.println(h3Core.h3ToString(index));
                     System.out.println("center: " + h3Core.h3ToGeo(index));
