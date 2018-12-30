@@ -1,7 +1,7 @@
 # Index truncation error
 
 ```
-mvn exec:java -Dexec.mainClass="com.isaacbrodsky.h3.TruncationRatioApp"
+mvn exec:java -Dexec.mainClass="com.isaacbrodsky.h3measurements.h3.TruncationRatioApp"
 ```
 
 When truncating indexes to the next coarser resolution, about 7.2% of the area is in error.

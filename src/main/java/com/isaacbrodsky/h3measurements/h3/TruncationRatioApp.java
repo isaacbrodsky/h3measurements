@@ -1,6 +1,6 @@
-package com.isaacbrodsky.h3;
+package com.isaacbrodsky.h3measurements.h3;
 
-import com.isaacbrodsky.SphereRandom;
+import com.isaacbrodsky.h3measurements.SphereRandom;
 import com.uber.h3core.H3Core;
 import com.uber.h3core.util.GeoCoord;
 

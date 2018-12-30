@@ -1,7 +1,9 @@
-package com.isaacbrodsky.h3;
+package com.isaacbrodsky.h3measurements.s2;
 
-import com.uber.h3core.H3Core;
-import com.uber.h3core.util.GeoCoord;
+import com.google.common.geometry.S2Cell;
+import com.google.common.geometry.S2CellId;
+import com.google.common.geometry.S2LatLng;
+import com.google.common.geometry.S2Point;
 import org.geotools.geometry.jts.JTS;
 import org.geotools.measure.Measure;
 import org.geotools.referencing.CRS;
@@ -16,28 +18,23 @@ import org.opengis.referencing.operation.MathTransform;
 import org.opengis.referencing.operation.TransformException;
 import si.uom.SI;
 
-import java.util.List;
-import java.util.stream.Collectors;
+public class S2AreaUtils {
+    public static Measure computeArea(S2CellId id, GeometryFactory factory) {
+        final S2Cell cell = new S2Cell(id);
+        final S2LatLng centroid = new S2LatLng(cell.getCenter());
 
-public class AreaUtils {
-    private static final double M2_TO_KM2 = 0.000001;
+        final Coordinate[] coords = new Coordinate[5];
+        coords[0] = pointToCoord(cell.getVertex(0));
+        coords[1] = pointToCoord(cell.getVertex(1));
+        coords[2] = pointToCoord(cell.getVertex(2));
+        coords[3] = pointToCoord(cell.getVertex(3));
+        coords[4] = pointToCoord(cell.getVertex(0));
 
-    public static Measure computeArea(H3Core h3Core, GeometryFactory factory, long index) {
-        final List<GeoCoord> coords = h3Core.h3ToGeoBoundary(index);
-        final GeoCoord centroid = h3Core.h3ToGeo(index);
-        // Convert to closed loop
-        coords.add(coords.get(0));
-
-        final Polygon p = factory.createPolygon(
-                coords.stream()
-                        .map(c -> new Coordinate(c.lng, c.lat))
-                        .collect(Collectors.toList())
-                        .toArray(new Coordinate[0])
-        );
+        final Polygon p = factory.createPolygon(coords);
         // Refer to https://gis.stackexchange.com/questions/127921/unit-of-geotools-getarea-function
         try {
             // Universal Transverse Mercator centered on the cell
-            final String code = "AUTO:42001," + centroid.lng + "," + centroid.lat;
+            final String code = "AUTO:42001," + centroid.lngDegrees() + "," + centroid.latDegrees();
             final CoordinateReferenceSystem auto = CRS.decode(code);
 
             final MathTransform transform = CRS.findMathTransform(DefaultGeographicCRS.WGS84, auto);
@@ -45,11 +42,12 @@ public class AreaUtils {
             final Polygon projed = (Polygon) JTS.transform(p, transform);
             return new Measure(projed.getArea(), SI.SQUARE_METRE);
         } catch (MismatchedDimensionException | TransformException | FactoryException e) {
-            throw new RuntimeException("Failed to compute area for " + h3Core.h3ToString(index), e);
+            throw new RuntimeException("Failed to compute area for " + id.toString(), e);
         }
     }
 
-    public static double m2ToKm2(double m2) {
-        return m2 * M2_TO_KM2;
+    private static Coordinate pointToCoord(S2Point p) {
+        final S2LatLng latLng = new S2LatLng(p);
+        return new Coordinate(latLng.lngDegrees(), latLng.latDegrees());
     }
 }

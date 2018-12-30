@@ -1,4 +1,4 @@
-package com.isaacbrodsky;
+package com.isaacbrodsky.h3measurements.h3;
 
 import com.uber.h3core.util.GeoCoord;
 

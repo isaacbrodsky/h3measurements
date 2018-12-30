@@ -1,7 +1,7 @@
 # Average cell area statistics for S2
 
 ```
-mvn exec:java -Dexec.mainClass="com.isaacbrodsky.s2.S2SummaryAreaStatsApp"
+mvn exec:java -Dexec.mainClass="com.isaacbrodsky.h3measurements.s2.S2SummaryAreaStatsApp"
 ```
 
 This application has the sample possible limitations as the H3 version.

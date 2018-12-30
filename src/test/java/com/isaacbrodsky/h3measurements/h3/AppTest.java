@@ -1,4 +1,4 @@
-package com.isaacbrodsky.h3;
+package com.isaacbrodsky.h3measurements.h3;
 
 import static org.junit.Assert.assertTrue;
 

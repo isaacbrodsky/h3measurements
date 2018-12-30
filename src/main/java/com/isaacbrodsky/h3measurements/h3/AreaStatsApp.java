@@ -1,4 +1,4 @@
-package com.isaacbrodsky.h3;
+package com.isaacbrodsky.h3measurements.h3;
 
 import com.uber.h3core.H3Core;
 import org.geotools.measure.Measure;

@@ -1,7 +1,7 @@
 # Average cell area statistics
 
 ```
-mvn exec:java -Dexec.mainClass="com.isaacbrodsky.h3.SummaryAreaStatsApp"
+mvn exec:java -Dexec.mainClass="com.isaacbrodsky.h3measurements.h3.SummaryAreaStatsApp"
 ```
 
 This application produces average area for cells sampled across the world.

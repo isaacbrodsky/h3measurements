@@ -1,9 +1,9 @@
-package com.isaacbrodsky.s2;
+package com.isaacbrodsky.h3measurements.s2;
 
 import com.google.common.geometry.S2CellId;
 import com.google.common.geometry.S2LatLng;
-import com.isaacbrodsky.SphereRandom;
-import com.isaacbrodsky.h3.AreaUtils;
+import com.isaacbrodsky.h3measurements.SphereRandom;
+import com.isaacbrodsky.h3measurements.h3.AreaUtils;
 import com.uber.h3core.util.GeoCoord;
 import org.apache.commons.math.stat.descriptive.SummaryStatistics;
 import org.geotools.measure.Measure;
