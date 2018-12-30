@@ -8,3 +8,7 @@ Build with `mvn package`.
 * [Average area statistics](./README-SummaryAreaStats.md)
 * [Truncation statistics](./README-Truncation.md)
 * [Area statistics](./README-AreaStats.md)
+
+There are also tests for some comparable systems.
+
+* [S2 average area statistics](./README-S2SummaryAreaStats.md)
