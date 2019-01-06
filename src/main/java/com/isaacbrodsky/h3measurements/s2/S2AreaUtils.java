@@ -4,7 +4,7 @@ import com.google.common.geometry.S2Cell;
 import com.google.common.geometry.S2CellId;
 import com.google.common.geometry.S2LatLng;
 import com.google.common.geometry.S2Point;
-import com.isaacbrodsky.h3measurements.AreaUtils;
+import com.isaacbrodsky.h3measurements.GeoUtils;
 import org.geotools.measure.Measure;
 import org.locationtech.jts.geom.Coordinate;
 import org.locationtech.jts.geom.GeometryFactory;
@@ -23,7 +23,7 @@ public class S2AreaUtils {
         coords[4] = s2PointToCoord(cell.getVertex(0));
 
         final Polygon p = factory.createPolygon(coords);
-        return AreaUtils.computeArea(id.toString(), p, centroid);
+        return GeoUtils.computeArea(id.toString(), p, centroid);
     }
 
     private static Coordinate s2PointToCoord(S2Point p) {

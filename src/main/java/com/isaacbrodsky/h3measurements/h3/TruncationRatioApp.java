@@ -8,31 +8,39 @@ import com.uber.h3core.util.GeoCoord;
  * Calculate the percentage of area error when truncating indexes one resolution.
  */
 public class TruncationRatioApp {
-    private static final int MAX_ITERATIONS = 10000000;
+    private static final int MAX_ITERATIONS = 1000000;
 
     public static void main(String[] args) {
         try {
             final H3Core h3Core = H3Core.newInstance();
 
             for (int res = 15; res > 0; res--) {
-                int i = 0;
-                int in = 0;
-                int out = 0;
-                for (; i < MAX_ITERATIONS; i++) {
-                    final GeoCoord rnd = SphereRandom.random();
+                for (int resTruncated = res - 1; resTruncated >= 0; resTruncated--) {
+                    int i = 0;
+                    int in = 0;
+                    int out = 0;
+                    for (; i < MAX_ITERATIONS; i++) {
+                        final GeoCoord rnd = SphereRandom.random();
 
-                    final long index = h3Core.geoToH3(rnd.lat, rnd.lng, res);
-                    final long truncated = h3Core.h3ToParent(index, res - 1);
-                    final long coarse = h3Core.geoToH3(rnd.lat, rnd.lng, res - 1);
+                        final long index = h3Core.geoToH3(rnd.lat, rnd.lng, res);
+                        final long truncated = h3Core.h3ToParent(index, resTruncated);
+                        final long coarse = h3Core.geoToH3(rnd.lat, rnd.lng, resTruncated);
 
-                    if (truncated == coarse) {
-                        in++;
-                    } else {
-                        out++;
+                        if (truncated == coarse) {
+                            in++;
+                        } else {
+                            out++;
+                        }
                     }
-                }
 
-                System.out.format("final iterations=%d res=%d in=%d out=%d: %f\n", i, res, in, out, (double) in / (double) i);
+                    System.out.format("iterations=%d res=%d truncated=%d in=%d out=%d: %f percent contained\n",
+                            i,
+                            res,
+                            resTruncated,
+                            in,
+                            out,
+                            (double) in / (double) i);
+                }
             }
         } catch (Exception e) {
             e.printStackTrace();

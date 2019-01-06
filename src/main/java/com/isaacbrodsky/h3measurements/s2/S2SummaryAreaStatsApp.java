@@ -2,7 +2,7 @@ package com.isaacbrodsky.h3measurements.s2;
 
 import com.google.common.geometry.S2CellId;
 import com.google.common.geometry.S2LatLng;
-import com.isaacbrodsky.h3measurements.AreaUtils;
+import com.isaacbrodsky.h3measurements.GeoUtils;
 import com.isaacbrodsky.h3measurements.SphereRandom;
 import com.uber.h3core.util.GeoCoord;
 import org.apache.commons.math.stat.descriptive.SummaryStatistics;
@@ -32,10 +32,10 @@ public class S2SummaryAreaStatsApp {
 
                     final Measure area = S2AreaUtils.computeArea(id, factory);
 
-                    statistics.addValue(AreaUtils.m2ToKm2(area.doubleValue()));
+                    statistics.addValue(GeoUtils.m2ToKm2(area.doubleValue()));
                 }
 
-                System.out.format("final iterations=%d level=%d stats in km2: %sratio of max to min: %f\n\n",
+                System.out.format("iterations=%d level=%d stats in km2: %sratio of max to min: %f\n\n",
                         i,
                         level,
                         statistics.toString(),

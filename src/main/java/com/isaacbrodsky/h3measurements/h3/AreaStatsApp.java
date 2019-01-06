@@ -1,6 +1,6 @@
 package com.isaacbrodsky.h3measurements.h3;
 
-import com.isaacbrodsky.h3measurements.AreaUtils;
+import com.isaacbrodsky.h3measurements.GeoUtils;
 import com.uber.h3core.H3Core;
 import org.geotools.measure.Measure;
 import org.locationtech.jts.geom.GeometryFactory;
@@ -28,7 +28,7 @@ public class AreaStatsApp {
                     System.out.println("center: " + h3Core.h3ToGeo(index));
                     System.out.println("area: " + area);
                     System.out.println("area in km2: "
-                            + (AreaUtils.m2ToKm2(area.doubleValue())));
+                            + (GeoUtils.m2ToKm2(area.doubleValue())));
                 }
             }
         } catch (Exception e) {
