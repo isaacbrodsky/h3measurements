@@ -1,12 +1,23 @@
 # Average cell area statistics for S2
 
+## Sample invocation
+
 ```
 mvn exec:java -Dexec.mainClass="com.isaacbrodsky.h3measurements.s2.S2SummaryAreaStatsApp"
 ```
 
-This application has the sample possible limitations as the H3 version.
+## Summary
 
-It seems to be consistent with the Javadoc comment about the quadratic projection in S2Projections.java (maximum ratio of about 2.1)
+This application produces average area for S2 cells sampled across the world. Locations
+are sampled across a sphere, indexed to an `S2CellId`, and the area of this cell is then
+measured by projecting to Universal Transverse Mercator (`AUTO:42001` in Geotools) centered
+on the cell. Measures are in square kilometers.
+
+This application is intended to be comparable to the (average cell area statistics for H3)[./README-SummaryAreaStats.md].
+
+It seems to be consistent with the comment about the quadratic projection in (Geometry on the Sphere: Google's S2 Library)[https://docs.google.com/presentation/d/1Hl4KapfAENAOf4gv-pSngKwvS_jwNVHRPZTTDzXXn6Q/view#slide=id.i34] (maximum ratio of about 2.1).
+
+## Sample output
 
 ```
 final iterations=10000 level=0 stats in km2: SummaryStatistics:

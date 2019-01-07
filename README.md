@@ -1,14 +1,21 @@
 # H3 Measurements
 
 This repository contains code for measuring different aspects of the [H3](https://github.com/uber/h3) hexagonal
-hierarchical geospatial indexing system.
+hierarchical geospatial indexing system. Some things this repository measures includes average cell
+area, the effect of aperture 7 on cell precision truncation, and so on.
 
-Build with `mvn package`. There are several different applications that can be invoked:
+Build with `mvn package`. Each applicatio is described on its own README page, listed below, with sample
+invocation, explanation, and sample output.
+
+There are applications for describing randomly sampled cells:
 
 * [Average area statistics](./README-SummaryAreaStats.md)
 * [Truncation statistics](./README-Truncation.md)
-* [Area statistics](./README-AreaStats.md)
 * [Perimeter statistics](./README-SummaryPerimeterStats.md)
+
+There is also an application which measure user specified cells:
+
+* [Area statistics](./README-AreaStats.md)
 
 There are also tests for some comparable systems:
 

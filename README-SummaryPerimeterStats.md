@@ -1,12 +1,24 @@
-# Average cell edge statistics
+# Average cell edge length statistics
+
+## Sample invocation
 
 ```
 mvn exec:java -Dexec.mainClass="com.isaacbrodsky.h3measurements.h3.SummaryPerimeterStatsApp"
 ```
 
-This application produces average edge length for cells sampled across the world (random edge for each cell).
+## Summary
 
-Measures are in kilometers. The map projection used is Universal Transverse Mercator centered on each cell.
+This application produces average edge length for cells sampled across the world. Locations
+are sampled across a sphere, indexed to an `H3Index`, a random edge of this index is taken,
+and the length of this edge is then measured by projecting to Universal Transverse Mercator
+(`AUTO:42001` in Geotools) centered on the cell. Measures are in kilometers.
+
+Surprisingly, this application reports the ratio of maximum to minimum edge length as varying
+greatly for different resolutions (from 1.1 to 6.5). Edge lengths produced by this application
+seem to be slightly longer than those reported in the (H3 Resolution Table)[https://uber.github.io/h3/#/documentation/core-library/resolution-table].
+It is not clear why this is the case.
+
+## Sample output
 
 ```
 iterations=10000 res=0 stats in km: SummaryStatistics:

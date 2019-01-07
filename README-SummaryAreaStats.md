@@ -1,16 +1,23 @@
 # Average cell area statistics
 
+## Sample invocation
+
 ```
 mvn exec:java -Dexec.mainClass="com.isaacbrodsky.h3measurements.h3.SummaryAreaStatsApp"
 ```
 
-This application produces average area for cells sampled across the world.
+## Summary
 
-Mean area mostly agrees with the official H3 Resolution Table.
+This application produces average area for cells sampled across the world. Locations
+are sampled across a sphere, indexed to an `H3Index`, and the area of this cell is then
+measured by projecting to Universal Transverse Mercator (`AUTO:42001` in Geotools) centered
+on the cell. Measures are in square kilometers.
 
+Sample output is shown below. Mean area mostly agrees with the official
+(H3 Resolution Table)[https://uber.github.io/h3/#/documentation/core-library/resolution-table].
 Maximum cell size for a resolution is about twice the minimum cell size for that resolution.
 
-Measures are in square kilometers. The map projection used is Universal Transverse Mercator centered on each cell.
+## Sample output
 
 ```
 iterations=10000 res=0 stats in km2: SummaryStatistics:
@@ -208,7 +215,6 @@ ratio of max to min: 1.991690
 
 ## Possible limitations
 
-1. Incorrect sampling using spherical point picking.
-2. Incorrect choice of projection for measuring area.
-3. Ambiguous definition of "average" in the H3 Resolution Table.
-4. Limited number of samples (n=10000) per resolution.
+1. Choice of projection for measuring area.
+2. Ambiguous definition of "average" in the H3 Resolution Table.
+3. Limited number of samples (n=10000) per resolution.

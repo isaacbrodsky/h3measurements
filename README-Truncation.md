@@ -1,10 +1,29 @@
 # Index truncation error
 
+## Sample invocation
+
 ```
 mvn exec:java -Dexec.mainClass="com.isaacbrodsky.h3measurements.h3.TruncationRatioApp"
 ```
 
-When truncating indexes to a coarser resolution, about 7.2% ~ 6.2% of the area is in error.
+## Summary
+
+This application measures the ratio of area error when truncating from a finer H3
+resolution to a coarser one. The error is introduced by the use aperture 7 hexagon
+subdivision, where 7 finer hexagonal cells are approximately contained by a coarser
+cell.
+
+The ratio of error is measured by randomly sampling locations on the sphere, indexing
+to a fine resolution, and truncating the precision of the fine `H3Index`. The truncated
+`H3Index` is compared to the same location indexed at the coarser resolution (which is
+not affected by shape error). If the two indexes are the same, the point is considered
+`in`, as shown in the sample output below (otherwise it is considered `out`). The ratio
+of `in` points to all points sampled is taken as the shape error introduced by aperture 7.
+
+Sample output is shown below. When truncating indexes to a coarser resolution, about 7.2%
+~ 6.2% of the area is in error.
+
+## Sample output
 
 ```
 iterations=1000000 res=15 truncated=14 in=928646 out=71354: 0.928646 percent contained
