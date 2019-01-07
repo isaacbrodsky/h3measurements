@@ -18,7 +18,7 @@ to a fine resolution, and truncating the precision of the fine `H3Index`. The tr
 `H3Index` is compared to the same location indexed at the coarser resolution (which is
 not affected by shape error). If the two indexes are the same, the point is considered
 `in`, as shown in the sample output below (otherwise it is considered `out`). The ratio
-of `in` points to all points sampled is taken as the shape error introduced by aperture 7.
+of `out` points to all points sampled is taken as the shape error introduced by aperture 7.
 
 Sample output is shown below. When truncating indexes to a coarser resolution, about 7.2%
 ~ 6.2% of the area is in error.
