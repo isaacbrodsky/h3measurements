@@ -15,7 +15,7 @@ and the length of this edge is then measured by projecting to Universal Transver
 
 Surprisingly, this application reports the ratio of maximum to minimum edge length as varying
 greatly for different resolutions (from 1.1 to 6.5). Edge lengths produced by this application
-seem to be slightly longer than those reported in the (H3 Resolution Table)[https://uber.github.io/h3/#/documentation/core-library/resolution-table].
+seem to be slightly longer than those reported in the [H3 Resolution Table](https://uber.github.io/h3/#/documentation/core-library/resolution-table).
 It is not clear why this is the case.
 
 ## Sample output

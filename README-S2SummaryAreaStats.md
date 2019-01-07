@@ -13,9 +13,9 @@ are sampled across a sphere, indexed to an `S2CellId`, and the area of this cell
 measured by projecting to Universal Transverse Mercator (`AUTO:42001` in Geotools) centered
 on the cell. Measures are in square kilometers.
 
-This application is intended to be comparable to the (average cell area statistics for H3)[./README-SummaryAreaStats.md].
+This application is intended to be comparable to the [average cell area statistics for H3](./README-SummaryAreaStats.md).
 
-It seems to be consistent with the comment about the quadratic projection in (Geometry on the Sphere: Google's S2 Library)[https://docs.google.com/presentation/d/1Hl4KapfAENAOf4gv-pSngKwvS_jwNVHRPZTTDzXXn6Q/view#slide=id.i34] (maximum ratio of about 2.1).
+It seems to be consistent with the comment about the quadratic projection in [Geometry on the Sphere: Google's S2 Library](https://docs.google.com/presentation/d/1Hl4KapfAENAOf4gv-pSngKwvS_jwNVHRPZTTDzXXn6Q/view#slide=id.i34) (maximum ratio of about 2.1).
 
 ## Sample output
 

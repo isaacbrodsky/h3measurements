@@ -14,7 +14,7 @@ measured by projecting to Universal Transverse Mercator (`AUTO:42001` in Geotool
 on the cell. Measures are in square kilometers.
 
 Sample output is shown below. Mean area mostly agrees with the official
-(H3 Resolution Table)[https://uber.github.io/h3/#/documentation/core-library/resolution-table].
+[H3 Resolution Table](https://uber.github.io/h3/#/documentation/core-library/resolution-table).
 Maximum cell size for a resolution is about twice the minimum cell size for that resolution.
 
 ## Sample output
