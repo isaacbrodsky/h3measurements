@@ -4,7 +4,7 @@ This repository contains code for measuring different aspects of the [H3](https:
 hierarchical geospatial indexing system. Some things this repository measures includes average cell
 area, the effect of aperture 7 on cell precision truncation, and so on.
 
-Build with `mvn package`. Each applicatio is described on its own README page, listed below, with sample
+Build with `mvn package`. Each application is described on its own README page, listed below, with sample
 invocation, explanation, and sample output.
 
 There are applications for describing randomly sampled cells:
