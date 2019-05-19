@@ -1,5 +1,7 @@
 # H3 Measurements
 
+[![Build Status](https://travis-ci.com/isaacbrodsky/h3measurements.svg?branch=master)](https://travis-ci.com/isaacbrodsky/h3measurements)
+
 This repository contains code for measuring different aspects of the [H3](https://github.com/uber/h3) hexagonal
 hierarchical geospatial indexing system. Some things this repository measures includes average cell
 area, the effect of aperture 7 on cell precision truncation, and so on.
