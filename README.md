@@ -13,6 +13,7 @@ There are applications for describing randomly sampled cells:
 
 * [Average area statistics](./README-SummaryAreaStats.md)
 * [Truncation statistics](./README-Truncation.md)
+* [Centroid truncation statistics](./README-CentroidTruncation.md)
 * [Perimeter statistics](./README-SummaryPerimeterStats.md)
 
 There is also an application which measure user specified cells:

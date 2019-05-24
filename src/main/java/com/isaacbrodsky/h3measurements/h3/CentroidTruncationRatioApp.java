@@ -5,9 +5,9 @@ import com.uber.h3core.H3Core;
 import com.uber.h3core.util.GeoCoord;
 
 /**
- * Calculate the percentage of area error when truncating indexes.
+ * Calculate the percentage of area error when truncating indexes by reindexing their centroids.
  */
-public class TruncationRatioApp {
+public class CentroidTruncationRatioApp {
     private static final int MAX_ITERATIONS = 1000000;
 
     public static void main(String[] args) {
@@ -23,7 +23,8 @@ public class TruncationRatioApp {
                         final GeoCoord rnd = SphereRandom.random();
 
                         final long index = h3Core.geoToH3(rnd.lat, rnd.lng, res);
-                        final long truncated = h3Core.h3ToParent(index, resTruncated);
+						final GeoCoord centroid = h3Core.h3ToGeo(index);
+                        final long truncated = h3Core.geoToH3(centroid.lat, centroid.lng, resTruncated);
                         final long coarse = h3Core.geoToH3(rnd.lat, rnd.lng, resTruncated);
 
                         if (truncated == coarse) {
