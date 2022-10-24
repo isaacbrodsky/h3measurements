@@ -2,7 +2,7 @@ package com.isaacbrodsky.h3measurements.h3;
 
 import com.isaacbrodsky.h3measurements.SphereRandom;
 import com.uber.h3core.H3Core;
-import com.uber.h3core.util.GeoCoord;
+import com.uber.h3core.util.LatLng;
 
 /**
  * Calculate the percentage of area error when truncating indexes by reindexing their centroids.
@@ -20,12 +20,12 @@ public class CentroidTruncationRatioApp {
                     int in = 0;
                     int out = 0;
                     for (; i < MAX_ITERATIONS; i++) {
-                        final GeoCoord rnd = SphereRandom.random();
+                        final LatLng rnd = SphereRandom.random();
 
-                        final long index = h3Core.geoToH3(rnd.lat, rnd.lng, res);
-						final GeoCoord centroid = h3Core.h3ToGeo(index);
-                        final long truncated = h3Core.geoToH3(centroid.lat, centroid.lng, resTruncated);
-                        final long coarse = h3Core.geoToH3(rnd.lat, rnd.lng, resTruncated);
+                        final long index = h3Core.latLngToCell(rnd.lat, rnd.lng, res);
+						final LatLng centroid = h3Core.cellToLatLng(index);
+                        final long truncated = h3Core.latLngToCell(centroid.lat, centroid.lng, resTruncated);
+                        final long coarse = h3Core.latLngToCell(rnd.lat, rnd.lng, resTruncated);
 
                         if (truncated == coarse) {
                             in++;

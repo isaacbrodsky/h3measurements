@@ -2,7 +2,7 @@ package com.isaacbrodsky.h3measurements.h3;
 
 import com.isaacbrodsky.h3measurements.SphereRandom;
 import com.uber.h3core.H3Core;
-import com.uber.h3core.util.GeoCoord;
+import com.uber.h3core.util.LatLng;
 
 /**
  * Calculate the percentage of area error when truncating indexes.
@@ -20,11 +20,11 @@ public class TruncationRatioApp {
                     int in = 0;
                     int out = 0;
                     for (; i < MAX_ITERATIONS; i++) {
-                        final GeoCoord rnd = SphereRandom.random();
+                        final LatLng rnd = SphereRandom.random();
 
-                        final long index = h3Core.geoToH3(rnd.lat, rnd.lng, res);
-                        final long truncated = h3Core.h3ToParent(index, resTruncated);
-                        final long coarse = h3Core.geoToH3(rnd.lat, rnd.lng, resTruncated);
+                        final long index = h3Core.latLngToCell(rnd.lat, rnd.lng, res);
+                        final long truncated = h3Core.cellToParent(index, resTruncated);
+                        final long coarse = h3Core.latLngToCell(rnd.lat, rnd.lng, resTruncated);
 
                         if (truncated == coarse) {
                             in++;
