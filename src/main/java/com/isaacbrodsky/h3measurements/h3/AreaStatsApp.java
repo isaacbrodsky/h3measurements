@@ -25,7 +25,7 @@ public class AreaStatsApp {
                     final Measure area = H3AreaUtils.computeArea(h3Core, factory, index);
 
                     System.out.println(h3Core.h3ToString(index));
-                    System.out.println("center: " + h3Core.h3ToGeo(index));
+                    System.out.println("center: " + h3Core.cellToLatLng(index));
                     System.out.println("area: " + area);
                     System.out.println("area in km2: "
                             + (GeoUtils.m2ToKm2(area.doubleValue())));
