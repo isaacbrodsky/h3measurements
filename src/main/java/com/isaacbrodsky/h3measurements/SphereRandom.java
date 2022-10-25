@@ -16,7 +16,7 @@ public class SphereRandom implements H3Provider, S2Provider {
     private final H3Core h3;
     
     public SphereRandom() throws IOException {
-        this(H3Core.newInstance());)
+        this(H3Core.newInstance());
     }
 
     public SphereRandom(H3Core h3) {

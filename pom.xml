@@ -50,7 +50,7 @@
     <dependency>
       <groupId>com.beust</groupId>
       <artifactId>jcommander</artifactId>
-      <version>1.71</version>
+      <version>1.82</version>
     </dependency>
 
     <!-- Not all of this should be needed, but it was easier to get this working dependency

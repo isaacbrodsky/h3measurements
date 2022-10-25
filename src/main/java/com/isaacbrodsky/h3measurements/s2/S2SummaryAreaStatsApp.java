@@ -1,7 +1,7 @@
 package com.isaacbrodsky.h3measurements.s2;
 
+import com.beust.jcommander.JCommander;
 import com.google.common.geometry.S2CellId;
-import com.google.common.geometry.S2LatLng;
 import com.isaacbrodsky.h3measurements.Args;
 import com.isaacbrodsky.h3measurements.GeoUtils;
 import com.isaacbrodsky.h3measurements.IndexRandom;
@@ -24,7 +24,7 @@ public class S2SummaryAreaStatsApp {
                 .build()
                 .parse(argv);
             final GeometryFactory factory = new GeometryFactory();
-            final S2Provider rnd = args.sphereRandom ? new SphereRandom() : new IndexRandom();
+            final S2Provider rnd = args.randomSphere ? new SphereRandom() : new IndexRandom();
 
             for (int level = 0; level <= S2CellId.MAX_LEVEL; level++) {
                 final SummaryStatistics statistics = new SummaryStatistics();

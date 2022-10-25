@@ -1,7 +1,9 @@
 package com.isaacbrodsky.h3measurements.h3;
 
+import com.beust.jcommander.JCommander;
 import com.isaacbrodsky.h3measurements.Args;
 import com.isaacbrodsky.h3measurements.GeoUtils;
+import com.isaacbrodsky.h3measurements.IndexRandom;
 import com.isaacbrodsky.h3measurements.SphereRandom;
 import com.uber.h3core.H3Core;
 import com.uber.h3core.util.LatLng;
@@ -29,7 +31,7 @@ public class SummaryPerimeterStatsApp {
                 .parse(argv);
             final GeometryFactory factory = new GeometryFactory();
             final H3Core h3Core = H3Core.newInstance();
-            final H3Provider rnd = args.sphereRandom ? new SphereRandom() : new IndexRandom();
+            final H3Provider rnd = args.randomSphere ? new SphereRandom() : new IndexRandom();
             final Random random = ThreadLocalRandom.current();
 
             for (int res = 0; res <= 15; res++) {
